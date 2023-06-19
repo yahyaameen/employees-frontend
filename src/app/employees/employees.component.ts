@@ -9,10 +9,14 @@ import { EmployeeService } from '../employee-crud.service'
 })
 export class EmployeesComponent implements OnInit {
   employees!: Employee[];
+  userName!: string;
+  userJson: any
 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
+    this.userJson = localStorage.getItem('user')
+    this.userName = JSON.parse(this.userJson).username
     this.getEmployees();
   }
 
